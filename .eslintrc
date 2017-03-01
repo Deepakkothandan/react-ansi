@@ -10,6 +10,6 @@
         "document": true
     },
     "rules": {
-        "prefer-stateless-function": [0]
+        "react/prefer-stateless-function": [0]
     }
 }
