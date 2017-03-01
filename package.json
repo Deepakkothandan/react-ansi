@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "rimraf dist/ && webpack"
+    "build": "rimraf dist/* && webpack"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
