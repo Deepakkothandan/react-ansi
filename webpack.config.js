@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = {
 
@@ -39,8 +40,8 @@ module.exports = {
 	},
 
 	resolve: {
-    extensions: [".js", ".jsx"]
-  },
+		extensions: [".js", ".jsx"]
+	},
 
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -48,7 +49,11 @@ module.exports = {
 			template: './app/index.html.ejs',
 			inject: 'body',
 		}),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new WebpackBrowserPlugin({
+			port: 8080,
+			url: 'http://localhost'
+		})
 	],
 
 	devServer: {
