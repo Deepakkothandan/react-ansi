@@ -59,6 +59,8 @@ module.exports = {
 	devServer: {
 		hot: true,
 		inline: true,
-		contentBase: 'app/'
+		contentBase: 'app/',
+		historyApiFallback: true,
+		overlay: true
 	}
 }
