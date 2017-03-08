@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
-import Menu from './components/Main';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import Main from './components/Main';
+import Vagrant from './components/Vagrant';
 import About from './components/About';
 import Documentation from './components/Documentation';
 
@@ -9,9 +10,11 @@ class App extends React.Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path={'/'} component={Menu} />
-        <Route path={'about'} component={About} />
-        <Route path={'docs'} component={Documentation} />
+        <Route path={'/'} component={Main}>
+          <IndexRoute component={Vagrant} />
+          <Route path={'about'} component={About} />
+          <Route path={'docs'} component={Documentation} />
+        </Route>
       </Router>
     );
   }

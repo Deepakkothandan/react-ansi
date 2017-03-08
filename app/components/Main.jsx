@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import Vagrant from './Vagrant';
 
 export default class Main extends Component {
+
   render() {
     return (
       <div className="Main">
@@ -11,10 +11,14 @@ export default class Main extends Component {
         <div className="columns">
           <div className="column is-2" />
           <div className="column is-8">
-            <Vagrant />
+            {this.props.children}
           </div>
         </div>
       </div>
     );
   }
 }
+
+Main.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};

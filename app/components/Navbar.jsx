@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { IndexLink } from 'react-router';
 
 export default class Navbar extends Component {
 
@@ -10,9 +11,9 @@ export default class Navbar extends Component {
             <a className="nav-item">
               <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo" />
             </a>
-            <a className="nav-item is-tab is-hidden-mobile is-active" href="/">Home</a>
-            <a className="nav-item is-tab is-hidden-mobile" href="/docs">Documention</a>
-            <a className="nav-item is-tab is-hidden-mobile" href="/about">About</a>
+            <IndexLink className="nav-item is-tab is-hidden-mobile" activeClassName="is-active" to="/">Home</IndexLink>
+            <IndexLink className="nav-item is-tab is-hidden-mobile" activeClassName="is-active"to="/docs">Documentaion</IndexLink>
+            <IndexLink className="nav-item is-tab is-hidden-mobile" activeClassName="is-active" to="/about">About</IndexLink>
           </div>
           <div className="nav-center">
             <a className="nav-item">
