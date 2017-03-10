@@ -1,4 +1,4 @@
-export default function () {
+export default () => {
   const vagrant = {
     os: 'ubuntu',
     ip: '127.0.0.1',
@@ -7,4 +7,4 @@ export default function () {
     memory: 512,
   };
   return vagrant;
-}
+};

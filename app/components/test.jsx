@@ -23,9 +23,11 @@ class Test extends Component {
   }
 }
 
-function mapStatetoProps(state) {
+var mapStatetoProps = (state) => {
+  // console.log(state.vagrant);
   return {
-    vagrant: state.vagrant
+    vagrant: state.vagrant,
+    packages: state.packages,
   };
 }
 
