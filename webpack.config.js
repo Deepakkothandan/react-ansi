@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
 	devtool: 'source-map',
@@ -48,12 +49,9 @@ module.exports = {
 						localIdentName: '[name]__[local]___[hash:base64:5]'
 					}
 				}, {
-					loader: 'sass-loader'
+					loader: 'postcss-loader'
 				}, {
-					loader: 'autoprefixer-loader',
-					query: {
-						browsers: 'last 2 versions'
-					}
+					loader: 'sass-loader',
 				}]
 			},
 		],
@@ -73,6 +71,13 @@ module.exports = {
 		new WebpackBrowserPlugin({
 			port: 8080,
 			url: 'http://localhost'
+		}),
+		new webpack.LoaderOptionsPlugin({
+			options: {
+				postcss: [
+					autoprefixer(),
+				]
+			}
 		})
 	],
 
