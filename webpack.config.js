@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
-const autoprefixer = require('autoprefixer')
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'source-map',
@@ -49,9 +49,9 @@ module.exports = {
             localIdentName: '[name]__[local]___[hash:base64:5]'
           }
         }, {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
         }, {
-          loader: 'sass-loader',
+          loader: 'sass-loader'
         }]
       },
     ],
