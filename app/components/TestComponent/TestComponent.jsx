@@ -4,11 +4,6 @@ import styles from './styles.scss';
 export default class TestComponent extends Component {
 
   render() {
-    /*    const style = {
-          color: 'red',
-          fontSize: 50,
-        };*/
-
     return (
       <div>
         <br />
