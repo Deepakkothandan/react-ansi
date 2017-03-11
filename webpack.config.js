@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'source-map',
@@ -36,6 +37,23 @@ module.exports = {
           loader: 'babel-loader'
         }],
       },
+      {
+        test: /\.scss$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader',
+          query: {
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]'
+          }
+        }, {
+          loader: 'postcss-loader',
+        }, {
+          loader: 'sass-loader'
+        }]
+      },
     ],
   },
 
@@ -53,6 +71,13 @@ module.exports = {
     new WebpackBrowserPlugin({
       port: 8080,
       url: 'http://localhost'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer(),
+        ]
+      }
     })
   ],
 
