@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import updateVagrant, { setOs, setHostName } from '../redux/actions';
+import updateVagrant, { setOs, setHostName, setSharedPath, setIp, setMemory } from '../redux/actions';
 
 class Vagrant extends Component {
 
@@ -28,7 +28,7 @@ class Vagrant extends Component {
             className="input"
             type="text"
             placeholder={this.props.vagrant.name}
-            onBlur={event => this.props.setHostName({ name: event.target.value })}
+            onBlur={event => this.props.setHostName({ hostname: event.target.value })}
           />
         </p>
         <label htmlFor="ip" className="label has-text-left">IP Address</label>
@@ -37,7 +37,7 @@ class Vagrant extends Component {
             className="input"
             type="text"
             placeholder={this.props.vagrant.ip}
-            onChange={event => this.setState({ ip: event.target.value })}
+            onBlur={event => this.props.setIp({ ip: event.target.value })}
           />
         </p>
         <label htmlFor="memory" className="label has-text-left">Memory</label>
@@ -46,7 +46,7 @@ class Vagrant extends Component {
             className="input"
             type="text"
             placeholder={this.props.vagrant.memory}
-            onChange={event => this.setState({ memory: event.target.value })}
+            onBlur={event => this.props.setMemory({ memory: event.target.value })}
           />
         </p>
         <label htmlFor="path" className="label has-text-left">Shared Folder Path</label>
@@ -54,8 +54,8 @@ class Vagrant extends Component {
           <input
             className="input"
             type="text"
-            placeholder={this.props.vagrant.sp}
-            onChange={event => this.setState({ sp: event.target.value })}
+            placeholder={this.props.vagrant.sharedpath}
+            onBlur={event => this.props.setSharedPath({ sharedpath: event.target.value })}
           />
         </p>
         <button
@@ -79,7 +79,13 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateVagrant, setOs, setHostName }, dispatch);
+  return bindActionCreators({
+    updateVagrant,
+    setOs,
+    setHostName,
+    setSharedPath,
+    setIp,
+    setMemory }, dispatch);
 }
 
 Vagrant.propTypes = {
@@ -87,6 +93,9 @@ Vagrant.propTypes = {
   updateVagrant: React.PropTypes.func.isRequired,
   setOs: React.PropTypes.func.isRequired,
   setHostName: React.PropTypes.func.isRequired,
+  setSharedPath: React.PropTypes.func.isRequired,
+  setIp: React.PropTypes.func.isRequired,
+  setMemory: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Vagrant);
