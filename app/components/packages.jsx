@@ -1,35 +1,52 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 import { updatePackages } from '../redux/actions';
 
 class Packages extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: [],
+    };
+  }
+
+  logChange = (value) => {
+    this.setState({ value });
+  }
 
   render() {
-    const names = ['vim', 'git', 'nginx'];
-    const { packages } = this.props;
+    const options = [
+      { value: 'one', label: 'git' },
+      { value: 'two', label: 'vim' },
+    ];
 
     return (
       <div className="packages">
         <h1 className="title">Packages</h1>
-        <label htmlFor="select box" className="label">Select Box</label>
-        <p className="control">
-          <span className="select is-fullwidth">
-            <select onChange={event => this.setState({ packages: event.target.value })}>
-              <option value="" disabled selected hidden>Please Choose...</option>
-              {names.map((name, index) =>
-                <option key={index}>{name}</option>,
-              )}
-            </select>
-          </span>
-        </p>
+        <Select
+          name="form-field-name"
+          value={this.state.value}
+          options={options}
+          multi
+          onChange={this.logChange}
+        />
+
+        <br />
+
         <button
           className="button is-medium is-primary is-pulled-right"
-          onClick={() => this.props.updatePackages({
-            packages,
-          })}
+          onClick={() => this.props.nextStep()}
         >
           Next
+        </button>
+        <button
+          className="button is-medium is-primary is-pulled-left"
+          onClick={() => this.props.previousStep()}
+        >
+          Previous
         </button>
       </div>
     );
@@ -48,8 +65,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 Packages.propTypes = {
-  updatePackages: PropTypes.func.isRequired,
-  packages: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  updatePackages: PropTypes.func.isRequired, //eslint-disable-line
+  previousStep: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Packages);

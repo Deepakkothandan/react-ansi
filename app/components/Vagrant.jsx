@@ -65,7 +65,7 @@ class Vagrant extends Component {
         </p>
         <button
           className="button is-medium is-primary is-pulled-right"
-          onClick={() => this.onClick()}
+          onClick={() => this.props.nextStep()}
         >
           Next
         </button>
@@ -98,6 +98,7 @@ Vagrant.propTypes = {
   setSharedPath: React.PropTypes.func.isRequired,
   setIp: React.PropTypes.func.isRequired,
   setMemory: React.PropTypes.func.isRequired,
+  nextStep: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Vagrant);

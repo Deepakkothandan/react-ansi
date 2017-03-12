@@ -46,4 +46,5 @@ export {
   setHostName,
   setSharedPath,
   setMemory,
-  setIp };
+  setIp,
+};
