@@ -4,7 +4,7 @@ export const initialVagrantState = {
   os: 'ubuntu/trusty64',
   ip: '192.168.10.10',
   sharedpath: './',
-  hostname: 'ubuntu',
+  hostname: 'ansi',
   memory: 512,
 };
 

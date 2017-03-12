@@ -1,10 +1,3 @@
-export default function updateVagrant(vagrant) {
-  return {
-    type: 'UPDATE_VAGRANT',
-    vagrant,
-  };
-}
-
 function setOs(os) {
   return {
     type: 'SET_OS',
@@ -47,4 +40,10 @@ function updatePackages(packages) {
   };
 }
 
-export { updatePackages, setOs, setHostName, setSharedPath, setMemory, setIp };
+export {
+  updatePackages,
+  setOs,
+  setHostName,
+  setSharedPath,
+  setMemory,
+  setIp };

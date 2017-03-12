@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import updateVagrant, { setOs, setHostName, setSharedPath, setIp, setMemory } from '../redux/actions';
+import { setOs, setHostName, setSharedPath, setIp, setMemory } from '../redux/actions';
 
 class Vagrant extends Component {
 
+  onClick() {
+    // e.preventDefault();
+    console.log(this.props.vagrant);
+  }
+
   render() {
     const names = ['ubuntu/trusty64', 'ubuntu/xenial64', 'centos7'];
-    const { vagrant } = this.props;
+    // const { vagrant } = this.props;
     return (
       <div className="vagrant">
         <h1 className="title">Vagrant</h1>
@@ -27,7 +32,7 @@ class Vagrant extends Component {
           <input
             className="input"
             type="text"
-            placeholder={this.props.vagrant.name}
+            placeholder={this.props.vagrant.hostname}
             onBlur={event => this.props.setHostName({ hostname: event.target.value })}
           />
         </p>
@@ -60,9 +65,7 @@ class Vagrant extends Component {
         </p>
         <button
           className="button is-medium is-primary is-pulled-right"
-          onClick={() => this.props.updateVagrant(
-            vagrant,
-          )}
+          onClick={() => this.onClick()}
         >
           Next
         </button>
@@ -80,17 +83,16 @@ function mapStatetoProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    updateVagrant,
     setOs,
     setHostName,
     setSharedPath,
     setIp,
-    setMemory }, dispatch);
+    setMemory,
+  }, dispatch);
 }
 
 Vagrant.propTypes = {
   vagrant: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  updateVagrant: React.PropTypes.func.isRequired,
   setOs: React.PropTypes.func.isRequired,
   setHostName: React.PropTypes.func.isRequired,
   setSharedPath: React.PropTypes.func.isRequired,
