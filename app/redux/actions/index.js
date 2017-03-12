@@ -1,7 +1,29 @@
 export default function updateVagrant(vagrant) {
-  // console.log('vagrant object', vagrant);
   return {
     type: 'UPDATE_VAGRANT',
-    payload: vagrant,
+    vagrant,
   };
 }
+
+function setOs(os) {
+  return {
+    type: 'SET_OS',
+    os,
+  };
+}
+
+function setHostName(name) {
+  return {
+    type: 'SET_HOSTNAME',
+    name,
+  };
+}
+
+function updatePackages(packages) {
+  return {
+    type: 'UPDATE_PACKAGES',
+    packages,
+  };
+}
+
+export { updatePackages, setOs, setHostName };

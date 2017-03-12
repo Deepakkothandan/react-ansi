@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import updateVagrant from '../redux/actions';
+import updateVagrant, { setOs, setHostName } from '../redux/actions';
 
 class Vagrant extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      os: '',
-      ip: '',
-      sp: '',
-      name: '',
-      memory: 0,
-    };
-  }
 
   render() {
     const names = ['ubuntu/trusty64', 'ubuntu/xenial64', 'centos7'];
+    const { vagrant } = this.props;
     return (
       <div className="vagrant">
         <h1 className="title">Vagrant</h1>
         <label htmlFor="select box" className="label">Select Box</label>
         <p className="control">
           <span className="select is-fullwidth">
-            <select onChange={event => this.setState({ os: event.target.value })}>
+            <select onChange={event => this.props.setOs({ os: event.target.value })}>
               <option value="" disabled selected hidden>Please Choose...</option>
               {names.map((name, index) =>
                 <option key={index}>{name}</option>,
@@ -37,7 +28,7 @@ class Vagrant extends Component {
             className="input"
             type="text"
             placeholder={this.props.vagrant.name}
-            onChange={event => this.setState({ name: event.target.value })}
+            onBlur={event => this.props.setHostName({ name: event.target.value })}
           />
         </p>
         <label htmlFor="ip" className="label has-text-left">IP Address</label>
@@ -69,13 +60,9 @@ class Vagrant extends Component {
         </p>
         <button
           className="button is-medium is-primary is-pulled-right"
-          onClick={() => this.props.updateVagrant({
-            os: this.state.os,
-            ip: this.state.ip,
-            sp: this.state.sp,
-            name: this.state.name,
-            memory: this.state.memory,
-          })}
+          onClick={() => this.props.updateVagrant(
+            vagrant,
+          )}
         >
           Next
         </button>
@@ -92,12 +79,14 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateVagrant }, dispatch);
+  return bindActionCreators({ updateVagrant, setOs, setHostName }, dispatch);
 }
 
 Vagrant.propTypes = {
   vagrant: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   updateVagrant: React.PropTypes.func.isRequired,
+  setOs: React.PropTypes.func.isRequired,
+  setHostName: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Vagrant);
