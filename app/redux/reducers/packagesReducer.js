@@ -1,20 +1,15 @@
 import update from 'immutability-helper';
 
-export const packages = {
-  tools: ['vim', 'git'],
-};
+export const packages = [];
 
 function packagesReducer(state = packages, action) {
   switch (action.type) {
     case 'UPDATE_PACKAGES':
-      // return action.updateVagrantState;
       // console.log(action);
-      console.log(state);
-      return update(state, {
-        tools: {
-          $set: action.packages,
-        },
-      });
+      // console.log(state);
+      return update(
+        packages, { $push: action.packages.val },
+      );
     default:
       return state;
   }

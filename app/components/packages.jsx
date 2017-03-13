@@ -14,13 +14,16 @@ class Packages extends Component {
   }
 
   logChange = (value) => {
+    const val = value.split(',');
     this.setState({ value });
+    this.props.updatePackages({ val });
   }
 
   render() {
     const options = [
-      { value: 'one', label: 'git' },
-      { value: 'two', label: 'vim' },
+      { value: 'git', label: 'git' },
+      { value: 'vim', label: 'vim' },
+      { value: 'nginx', label: 'nginx' },
     ];
 
     return (
@@ -28,10 +31,13 @@ class Packages extends Component {
         <h1 className="title">Packages</h1>
         <Select
           name="form-field-name"
-          value={this.state.value}
+          value={this.props.packages}
           options={options}
           multi
           onChange={this.logChange}
+          joinValues
+          delimiter=","
+          simpleValue
         />
 
         <br />
@@ -65,7 +71,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 Packages.propTypes = {
-  updatePackages: PropTypes.func.isRequired, //eslint-disable-line
+  updatePackages: PropTypes.func.isRequired,
+  packages: PropTypes.arrayOf(PropTypes.string).isRequired,
   previousStep: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
 };

@@ -5,11 +5,6 @@ import { setOs, setHostName, setSharedPath, setIp, setMemory } from '../redux/ac
 
 class Vagrant extends Component {
 
-  onClick() {
-    // e.preventDefault();
-    console.log(this.props.vagrant);
-  }
-
   render() {
     const names = ['ubuntu/trusty64', 'ubuntu/xenial64', 'centos7'];
     // const { vagrant } = this.props;
@@ -19,8 +14,10 @@ class Vagrant extends Component {
         <label htmlFor="select box" className="label">Select Box</label>
         <p className="control">
           <span className="select is-fullwidth">
-            <select onChange={event => this.props.setOs({ os: event.target.value })}>
-              <option value="" disabled selected hidden>Please Choose...</option>
+            <select
+              value={this.props.vagrant.os}
+              onChange={event => this.props.setOs({ os: event.target.value })}
+            >
               {names.map((name, index) =>
                 <option key={index}>{name}</option>,
               )}
@@ -32,7 +29,7 @@ class Vagrant extends Component {
           <input
             className="input"
             type="text"
-            placeholder={this.props.vagrant.hostname}
+            placeholder="nme"
             onBlur={event => this.props.setHostName({ hostname: event.target.value })}
           />
         </p>
