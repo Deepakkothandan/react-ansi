@@ -40,6 +40,14 @@ function updatePackages(packages) {
   };
 }
 
+function setPhpVersion(php) {
+  // console.log('action is', php);
+  return {
+    type: 'SET_PHP_VERSION',
+    php,
+  };
+}
+
 export {
   updatePackages,
   setOs,
@@ -47,4 +55,5 @@ export {
   setSharedPath,
   setMemory,
   setIp,
+  setPhpVersion,
 };

@@ -7,7 +7,7 @@ class Vagrant extends Component {
 
   render() {
     const names = ['ubuntu/trusty64', 'ubuntu/xenial64', 'centos7'];
-    // const { vagrant } = this.props;
+
     return (
       <div className="vagrant">
         <h1 className="title">Vagrant</h1>

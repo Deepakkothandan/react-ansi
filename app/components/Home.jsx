@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Vagrant from './Vagrant';
 import Packages from './packages';
+import Php from './Php';
 
 export default class Home extends Component {
 
@@ -29,6 +30,8 @@ export default class Home extends Component {
         return <Vagrant nextStep={this.nextStep} />;
       case 2:
         return <Packages nextStep={this.nextStep} previousStep={this.previousStep} />;
+      case 3:
+        return <Php nextStep={this.nextStep} previousStep={this.previousStep} />;
       default:
         this.state.step = 1;
         return <Vagrant nextStep={this.nextStep} />;
