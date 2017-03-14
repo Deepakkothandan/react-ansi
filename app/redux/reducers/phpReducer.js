@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 
 export const phpInitialState = {
-  version: 5.5,
+  version: 5.5
 };
 
 function phpReducer(state = phpInitialState, action) {
@@ -10,8 +10,8 @@ function phpReducer(state = phpInitialState, action) {
       console.log(action.php.version);
       return update(state, {
         version: {
-          $set: action.php.version,
-        },
+          $set: action.php.version
+        }
       });
     default:
       return state;

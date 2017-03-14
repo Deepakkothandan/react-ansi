@@ -7,13 +7,10 @@ function packagesReducer(state = packages, action) {
     case 'UPDATE_PACKAGES':
       // console.log(action);
       // console.log(state);
-      return update(
-        packages, { $push: action.packages.val },
-      );
+      return update(packages, { $push: action.packages.val });
     default:
       return state;
   }
 }
 
 export default packagesReducer;
-

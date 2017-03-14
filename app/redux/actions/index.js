@@ -1,42 +1,42 @@
 function setOs(os) {
   return {
     type: 'SET_OS',
-    os,
+    os
   };
 }
 
 function setHostName(hostname) {
   return {
     type: 'SET_HOSTNAME',
-    hostname,
+    hostname
   };
 }
 
 function setSharedPath(sharedpath) {
   return {
     type: 'SET_SHAREDPATH',
-    sharedpath,
+    sharedpath
   };
 }
 
 function setIp(ip) {
   return {
     type: 'SET_IP',
-    ip,
+    ip
   };
 }
 
 function setMemory(memory) {
   return {
     type: 'SET_MEMORY',
-    memory,
+    memory
   };
 }
 
 function updatePackages(packages) {
   return {
     type: 'UPDATE_PACKAGES',
-    packages,
+    packages
   };
 }
 
@@ -44,7 +44,7 @@ function setPhpVersion(php) {
   // console.log('action is', php);
   return {
     type: 'SET_PHP_VERSION',
-    php,
+    php
   };
 }
 
@@ -55,5 +55,5 @@ export {
   setSharedPath,
   setMemory,
   setIp,
-  setPhpVersion,
+  setPhpVersion
 };

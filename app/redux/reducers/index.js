@@ -6,7 +6,7 @@ import phpReducer from './phpReducer';
 const rootReducer = combineReducers({
   vagrant: vagrantReducer,
   packages: packagesReducer,
-  php: phpReducer,
+  php: phpReducer
 });
 
 export default rootReducer;
