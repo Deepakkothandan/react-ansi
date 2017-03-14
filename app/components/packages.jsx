@@ -9,21 +9,21 @@ class Packages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: [],
+      value: []
     };
   }
 
-  logChange = (value) => {
+  logChange = value => {
     const val = value.split(',');
     this.setState({ value });
     this.props.updatePackages({ val });
-  }
+  };
 
   render() {
     const options = [
       { value: 'git', label: 'git' },
       { value: 'vim', label: 'vim' },
-      { value: 'nginx', label: 'nginx' },
+      { value: 'nginx', label: 'nginx' }
     ];
 
     return (
@@ -62,7 +62,7 @@ class Packages extends Component {
 function mapStatetoProps(state) {
   // console.log(state);
   return {
-    packages: state.packages,
+    packages: state.packages
   };
 }
 
@@ -74,7 +74,7 @@ Packages.propTypes = {
   updatePackages: PropTypes.func.isRequired,
   packages: PropTypes.arrayOf(PropTypes.string).isRequired,
   previousStep: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Packages);

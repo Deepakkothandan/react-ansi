@@ -8,12 +8,12 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './app/app.jsx',
+    './app/app.jsx'
   ],
 
   output: {
     path: path.join(__dirname + '/dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
 
   module: {
@@ -22,53 +22,52 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
         enforce: 'pre',
-        use: [{
-          loader: 'eslint-loader',
-          options: {
-            emitWarning: true,
-          },
-        }],
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              emitWarning: true
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        use: [{
-          loader: 'babel-loader',
-        }],
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
       },
       {
         test: /\.css$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }],
-      },
-    ],
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
+      }
+    ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
 
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Ansi',
       template: './app/index.html.ejs',
-      inject: 'body',
+      inject: 'body'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new WebpackBrowserPlugin({
       port: 8080,
-      url: 'http://localhost',
-    }),
-  ],
-
-  devServer: {
-    hot: true,
-    inline: true,
-    contentBase: 'app/',
-    historyApiFallback: true,
-    overlay: true,
-  },
+      url: 'http://localhost'
+    })
+  ]
 };

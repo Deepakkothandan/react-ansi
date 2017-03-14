@@ -4,43 +4,46 @@ import Packages from './packages';
 import Php from './Php';
 
 export default class Home extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      step: 1,
+      step: 1
     };
   }
 
   nextStep = () => {
     this.setState({
-      step: this.state.step + 1,
+      step: this.state.step + 1
     });
-  }
+  };
 
   previousStep = () => {
     this.setState({
-      step: this.state.step - 1,
+      step: this.state.step - 1
     });
-  }
+  };
 
   renderStep = () => {
     switch (this.state.step) {
       case 1:
         return <Vagrant nextStep={this.nextStep} />;
       case 2:
-        return <Packages nextStep={this.nextStep} previousStep={this.previousStep} />;
+        return (
+          <Packages nextStep={this.nextStep} previousStep={this.previousStep} />
+        );
       case 3:
-        return <Php nextStep={this.nextStep} previousStep={this.previousStep} />;
+        return (
+          <Php nextStep={this.nextStep} previousStep={this.previousStep} />
+        );
       default:
         this.state.step = 1;
         return <Vagrant nextStep={this.nextStep} />;
     }
-  }
+  };
 
   render() {
     return (
-      <div >
+      <div>
         {this.renderStep()}
       </div>
     );

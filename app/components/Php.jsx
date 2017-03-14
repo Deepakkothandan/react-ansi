@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { setPhpVersion } from '../redux/actions';
 
 class LangPhp extends Component {
-
   render() {
     return (
       <div>
@@ -19,7 +18,8 @@ class LangPhp extends Component {
               name="question"
               value="5.5"
               checked={this.props.php.version === '5.5'}
-              onClick={event => this.props.setPhpVersion({ version: event.target.value })}
+              onClick={event =>
+                this.props.setPhpVersion({ version: event.target.value })}
             />
             5.5
           </label>
@@ -29,7 +29,8 @@ class LangPhp extends Component {
               name="question"
               value="5.6"
               checked={this.props.php.version === '5.6'}
-              onClick={event => this.props.setPhpVersion({ version: event.target.value })}
+              onClick={event =>
+                this.props.setPhpVersion({ version: event.target.value })}
             />
             5.6
           </label>
@@ -39,7 +40,8 @@ class LangPhp extends Component {
               name="question"
               value="7.0"
               checked={this.props.php.version === '7.0'}
-              onClick={event => this.props.setPhpVersion({ version: event.target.value })}
+              onClick={event =>
+                this.props.setPhpVersion({ version: event.target.value })}
             />
             7.0
           </label>
@@ -49,7 +51,8 @@ class LangPhp extends Component {
               name="question"
               value="7.1"
               checked={this.props.php.version === '7.1'}
-              onClick={event => this.props.setPhpVersion({ version: event.target.value })}
+              onClick={event =>
+                this.props.setPhpVersion({ version: event.target.value })}
             />
             7.1
           </label>
@@ -60,13 +63,13 @@ class LangPhp extends Component {
             onClick={() => this.props.nextStep()}
           >
             Next
-        </button>
+          </button>
           <button
             className="button is-medium is-primary is-pulled-left"
             onClick={() => this.props.previousStep()}
           >
             Previous
-        </button>
+          </button>
         </div>
       </div>
     );
@@ -77,19 +80,22 @@ LangPhp.propTypes = {
   setPhpVersion: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
-  php: PropTypes.object.isRequired, // eslint-disable-line
+  php: PropTypes.object.isRequired // eslint-disable-line
 };
 
 function mapStateToProps(state) {
   return {
-    php: state.php,
+    php: state.php
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    setPhpVersion,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      setPhpVersion
+    },
+    dispatch
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LangPhp);
